@@ -25,6 +25,7 @@ size_t	check_how_many_numbers(int argc, char **argv)
 	{
 		while (argv[i][j] != '\0')
 		{
+			printf("NUM: --%c--\n", argv[i][j]);
 			if (argv[i][j] == ' ' && argv[i][j + 1] != ' ')
 				nums++;
 			j++;
@@ -33,6 +34,7 @@ size_t	check_how_many_numbers(int argc, char **argv)
 		i++;
 		j = 0;
 	}
+	printf("NUM: %zu", nums);
 	return (nums);
 }
 
@@ -49,7 +51,7 @@ int	*transforme_int_and_check(int argc, char **argv, int *tamNum, t_stack **stac
 		return (NULL);
 	*tamNum = check_how_many_numbers(argc, argv);
 	if (*tamNum == 0)
-		exit(0);
+		exit(1);
 	integer_arguments = (int *)ft_calloc(*tamNum, sizeof(int));
 	if (integer_arguments == NULL)
 		return (0);
@@ -61,8 +63,8 @@ int	*transforme_int_and_check(int argc, char **argv, int *tamNum, t_stack **stac
 	if (check_repeated(integer_arguments, tamNum) == 0)
 	{
 		free(integer_arguments);
-		free(stacks);
-		exit(0);
+	//	free(stacks);
+		exit(1);
 	}
 	return (integer_arguments);
 }

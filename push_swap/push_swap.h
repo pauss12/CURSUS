@@ -70,14 +70,15 @@ bool		check_arguments(int argc, char **argv);
 int		check_numbers(char *arguments, int j);
 
 t_lists	*add_new_node(int number);
-t_lists	*stack_lists(int *argumentos_enteros, int *tam_num);
+//t_lists	*stack_lists(int *argumentos_enteros, int *tam_num);
+void	stack_lists(int *argumentos_enteros, int *tam_num, t_lists **list_a);
 
 int		check_repeated(int *argumentos_enteros, int *tam_num);
 
 int		*transforme_int_and_check(int argc, char **argv, int *tam_num, t_stack **stacks);
 
 size_t	check_how_many_numbers(int argc, char **argv);
-//void	imprimir_array(int *argumentos_enteros, int *tam_num);
+void	imprimir_array(int *argumentos_enteros, int *tam_num);
 
 void	numbers_together(char *str, int *argumentos_enteros, int *cont);
 //mvoid	numbers_together(char *str, int *argumentos_enteros, int *cont, int *estado);

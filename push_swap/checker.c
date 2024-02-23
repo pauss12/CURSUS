@@ -17,9 +17,14 @@ int	check_numbers(char *arguments, int j)
 	int	numero;
 
 	j = 0;
-	numero = 0;
+	numero = 1;
 	if (arguments[0] == '\0')
 		return (0);
+	if (arguments[0] == ' ' && arguments[1] == '\0')
+	{
+		error();
+		exit(1);
+	}
 	while (arguments[j] != '\0')
 	{
 		if (arguments[j] == ' ')
@@ -41,18 +46,48 @@ int	check_numbers(char *arguments, int j)
 	return (numero);
 }
 
-/*void imprimir_array(int *argumentos_enteros, int *tamNum)
+
+/*int	check_numbers(char *arguments, int j)
+{
+	int	numero;
+
+	j = 0;
+	numero = 1;
+	if (arguments[0] == '0')
+		return (0); 
+	if (arguments[0] == ' ' && arguments[1] == '\0')
+	{
+		error();
+		exit(1);
+	}
+	while (arguments[j] != '\0' && ft_isdigit(arguments[j]) == 1)
+	{
+		printf("entra a check\n");
+		if (arguments[j] == ' ')
+			j++;
+		else if ((ft_isdigit(arguments[j]) == 0) && (ft_isdigit(arguments[j + 1]) == 0))
+		{
+			numero = 0;
+			break ;
+		}
+		j++;
+	}
+	printf("sale de check\n");
+	return (numero);
+}*/
+
+void imprimir_array(int *argumentos_enteros, int *tamNum)
 {
     int i;
 
     i = 0;
     while (i < *tamNum)
     {
-        ft_printf("----El numero en la posicion %zu es %d ---- \n",
+        ft_printf("----El numero en la posicion %d es %d ---- \n",
 	   	i, argumentos_enteros[i]);
         i++;
     }
-}*/
+}
 
 
 bool	check_arguments(int argc, char **argv)

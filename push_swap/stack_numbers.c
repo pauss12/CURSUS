@@ -24,7 +24,7 @@ t_lists	*add_new_node(int number)
 	return (new_node);
 }
 
-t_lists	*stack_lists(int *argumentos_enteros, int *tamNum)
+/*t_lists	*stack_lists(int *argumentos_enteros, int *tamNum)
 {
 	int		i;
 	t_lists	*aux;
@@ -41,6 +41,24 @@ t_lists	*stack_lists(int *argumentos_enteros, int *tamNum)
 		aux->next = NULL;
 	}
 	return (stack_a);
+}*/
+
+void	stack_lists(int *argumentos_enteros, int *tamNum, t_lists **stack_a)
+{
+	int		i;
+	t_lists	*aux;
+
+	i = 0;
+	if (*stack_a == NULL)
+		*stack_a = add_new_node(argumentos_enteros[i]);
+	aux = *stack_a;
+	while (i < *tamNum - 1)
+	{
+		i++;
+		aux->next = add_new_node(argumentos_enteros[i]);
+		aux = aux->next;
+		aux->next = NULL;
+	}
 }
 
 void	print_stack(t_lists *stacks)

@@ -43,6 +43,7 @@ void error()
 {
 	write(2, "Error", 5);
 	write(2, "\n", 1);
+//	exit (0);
 }
 
 //MAIN  ----------------------------------------
@@ -57,14 +58,20 @@ int	main(int argc, char *argv[])
 	tam_num = 0;
 	if (argc == 1)
 		return (0);
+	if (argc == 2 && argv[1][0] == 0)
+		{
+			error();
+			exit(1);
+		}
 	if (check_arguments(argc, argv) == false)
 	{
 		//error();
-		free(stacks);
+		//free(stacks);
 		exit (1);
 	}
 	integer_arguments = transforme_int_and_check(argc, argv, &tam_num, &stacks);
-	stacks->list_a = stack_lists(integer_arguments, &tam_num);
+	//stacks->list_a = stack_lists(integer_arguments, &tam_num);
+	stack_lists(integer_arguments, &tam_num, &(stacks)->list_a);
 	stacks->list_b = NULL;
 	push_swap_function(stacks, tam_num);
 	//print_both_stacks(stacks);
